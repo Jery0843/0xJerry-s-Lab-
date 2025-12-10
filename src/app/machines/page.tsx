@@ -194,7 +194,7 @@ export default function MachinesPage() {
                 <div className="rounded-lg backdrop-blur-sm bg-black/10 light:bg-white/20 border border-white/5 p-3 sm:p-4">
                   <div className="flex items-center mb-2">
                     <FaServer className="text-cyber-green dark:text-cyber-green light:text-green-600 mr-2 text-sm sm:text-base" />
-                    <span className="text-xs sm:text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">Season Rank</span>
+                    <span className="text-xs sm:text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">Season Tier</span>
                   </div>
                   <p className="text-base sm:text-lg lg:text-xl font-bold text-cyber-green dark:text-cyber-green light:text-green-600">{htbStats.season_rank || 'N/A'}</p>
                 </div>
