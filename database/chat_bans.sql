@@ -1,0 +1,8 @@
+-- Chat Ban System
+CREATE TABLE IF NOT EXISTS chat_bans (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_email TEXT NOT NULL UNIQUE,
+    banned_by TEXT NOT NULL,
+    reason TEXT,
+    banned_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
