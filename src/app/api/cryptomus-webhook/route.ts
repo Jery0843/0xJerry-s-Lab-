@@ -49,22 +49,23 @@ export async function POST(request: Request) {
         tier
       });
       
-      // Add/update member in database
+      // Add/update member in database with 29-day expiry
       const db = getDatabase();
       if (db) {
         const stmt = await db.prepare(`
-          INSERT INTO members (email, name, tier_name, status, source, subscribed_at)
-          VALUES (?, ?, ?, 'active', 'crypto', datetime('now'))
+          INSERT INTO members (email, name, tier_name, status, source, subscribed_at, expiry_date)
+          VALUES (?, ?, ?, 'active', 'crypto', datetime('now'), datetime('now', '+29 days'))
           ON CONFLICT(email) DO UPDATE SET
             name = excluded.name,
             tier_name = excluded.tier_name,
             status = 'active',
             source = 'crypto',
-            subscribed_at = datetime('now')
+            subscribed_at = datetime('now'),
+            expiry_date = datetime('now', '+29 days')
         `);
         
         await stmt.bind(email, name, tier).run();
-        console.log('✅ Member saved:', email);
+        console.log('✅ Member saved with 29-day expiry:', email);
       }
       
       return NextResponse.json({ status: 'success' });
